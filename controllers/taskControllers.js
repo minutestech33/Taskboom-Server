@@ -239,7 +239,7 @@ exports.search = async (req, res) => {
             })
         }
 
-        const reg = new RegExp(name.trim(), 'i');
+        const reg = new RegExp(name, 'i');
 
         const searchTasks = await Task.find({
             user: userId,
@@ -247,7 +247,8 @@ exports.search = async (req, res) => {
         });
 
         return res.status(200).json({
-            searchTasks
+            searchTasks,
+            _as: false
         });
     } catch (err) {
         console.log(err);
