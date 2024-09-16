@@ -239,7 +239,7 @@ exports.search = async (req, res) => {
             })
         }
 
-        const reg = new RegExp(name, 'i');
+        const reg = new RegExp(name.trim(), 'i');
 
         const searchTasks = await Task.find({
             user: userId,
