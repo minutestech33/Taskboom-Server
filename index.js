@@ -16,7 +16,7 @@ const app = express();
 
 app.get("/", (req, res) => {
     res.status(200).json({
-        message: "Node server is running"
+        message: "NODE/EXPRESS SERVER IS RUNNING!"
     })
 })
 
