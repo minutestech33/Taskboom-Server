@@ -6,9 +6,9 @@ exports.createLabelValidator = [
         .trim()
         .notEmpty().withMessage('Provide a new label name.')
         .matches(/^\S+$/).withMessage('Name must not contain any whitespace.')
-        .custom(async (name) => {
+        .custom(async (name, { req }) => {
             try {
-                const findLabel = await Label.findOne({ name });
+                const findLabel = await Label.findOne({ name, user: req.userId });
                 if (findLabel) return Promise.reject('Name already exist.');
 
                 return true;
